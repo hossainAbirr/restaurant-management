@@ -1,5 +1,24 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext);
+
+    const handleRegister = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+        .then(result => {
+            console.log(result);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
     return (
         <div className="bg-current py-20 flex justify-center ">
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100">
@@ -32,15 +51,15 @@ const SignUp = () => {
                     <p className="px-3 text-gray-400">OR</p>
                     <hr className="w-full text-gray-400" />
                 </div>
-                <form className="space-y-8">
+                <form onSubmit={handleRegister} className="space-y-8">
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <label type="email" className="block text-sm">Your Name</label>
-                            <input type="text" name="name" id="email" placeholder="Your Name" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                            <input type="text" name="name" placeholder="Your Name" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                         </div>
                         <div className="space-y-2">
                             <label type="email" className="block text-sm">Email address</label>
-                            <input type="email" name="email" id="email" placeholder="Your Email" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                            <input type="email" name="email" placeholder="Your Email" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                         </div>
                         <div className="space-y-2">
                             <div className="flex justify-between">
@@ -50,7 +69,7 @@ const SignUp = () => {
                             <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                         </div>
                     </div>
-                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign in</button>
+                    <button className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900">Sign in</button>
                 </form>
             </div>
         </div>
