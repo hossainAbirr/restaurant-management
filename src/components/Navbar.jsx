@@ -7,18 +7,18 @@ const Navbar = () => {
     console.log(user);
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/alldishes'>All Dishes</NavLink></li>
+        <li><NavLink to='/addfood'>Add A Food</NavLink></li>
         <li><NavLink to='/blog'>Blog</NavLink></li>
     </>
 
     const handleLogOut = () => {
         logOut()
-        .then(() => {
-            alert('logged Out successful')
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(() => {
+                alert('logged Out successful')
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div className="navbar bg-base-100">
@@ -42,16 +42,16 @@ const Navbar = () => {
                 {
                     user ? <button onClick={handleLogOut} className="btn normal-case" to='/signin'>Sign Out</button> : <Link className="btn normal-case" to='/signin'>Sign In</Link>
                 }
-                
+
                 <div className="dropdown ">
-                    <label tabIndex={0} className="">
+                    <label tabIndex={0} className="btn btn-ghost">
                         {
                             user ? user?.photoURL ? <img className="w-12 h-12" src={user.photoURL} alt="" /> : <img className="w-12 h-12" src={avatar} alt="" /> : <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         }
 
 
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 absolute right-0">
+                    <ul tabIndex={0} className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 absolute right-0">
                         {navLinks}
                     </ul>
                 </div>

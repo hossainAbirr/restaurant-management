@@ -3,18 +3,28 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-    const {createUser, user} = useContext(AuthContext);
+    const {createUser, user, profileUpdate} = useContext(AuthContext);
 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
 
         createUser(email, password)
         .then(result => {
             console.log(result);
+            if(result.user){
+                profileUpdate(name, photo)
+                .then( () => {
+                    alert('profile updated')
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            }
         })
         .catch(error => {
             console.log(error);
@@ -57,6 +67,10 @@ const SignUp = () => {
                         <div className="space-y-2">
                             <label type="email" className="block text-sm">Your Name</label>
                             <input type="text" name="name" placeholder="Your Name" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                        </div>
+                        <div className="space-y-2">
+                            <label type="email" className="block text-sm">Your Photo</label>
+                            <input type="url" name="photo" placeholder="Your Photo URL" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                         </div>
                         <div className="space-y-2">
                             <label type="email" className="block text-sm">Email address</label>

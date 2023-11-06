@@ -10,7 +10,7 @@ import banner5 from '../../assets/banner5.jpg'
 const Banner = () => {
     const sliderImg = [banner1, banner3, banner4,]
     return (
-        <div className='h-[700px]'>
+        <div className='h-[700px] relative z-0'>
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                 spaceBetween={50}
