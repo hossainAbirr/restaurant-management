@@ -1,20 +1,21 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
-const SignUp = () => {
-    const {createUser, user} = useContext(AuthContext);
-
-    const handleRegister = e => {
+const Signin = () => {
+    const {logIn} = useContext(AuthContext)
+    const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-
-        createUser(email, password)
+    
+        logIn(email, password)
         .then(result => {
             console.log(result);
+            if(result.user){
+                alert('Logged In Successfull')
+            }
         })
         .catch(error => {
             console.log(error);
@@ -23,9 +24,9 @@ const SignUp = () => {
     return (
         <div className="bg-current py-20 flex justify-center ">
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100">
-                <h2 className="mb-3 text-3xl font-semibold text-center">New here? Sign Up with your email</h2>
+                <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
                 <p className="text-sm text-center text-gray-400">Dont have account?
-                    <Link to='/signin' className="focus:underline hover:underline">Log in here</Link>
+                    <Link to='/signup' className="focus:underline hover:underline">Sign up here</Link>
                 </p>
                 <div className="my-6 space-y-4">
                     <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ri focus:ri border-gray-400 focus:ri">
@@ -52,12 +53,8 @@ const SignUp = () => {
                     <p className="px-3 text-gray-400">OR</p>
                     <hr className="w-full text-gray-400" />
                 </div>
-                <form onSubmit={handleRegister} className="space-y-8">
+                <form onSubmit={handleLogin} className="space-y-8">
                     <div className="space-y-4">
-                        <div className="space-y-2">
-                            <label type="email" className="block text-sm">Your Name</label>
-                            <input type="text" name="name" placeholder="Your Name" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
-                        </div>
                         <div className="space-y-2">
                             <label type="email" className="block text-sm">Email address</label>
                             <input type="email" name="email" placeholder="Your Email" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
@@ -77,4 +74,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Signin;
