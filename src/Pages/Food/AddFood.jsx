@@ -96,7 +96,7 @@ const AddFood = () => {
                             <span className="label-text text-lg font-semibold">Your Email</span>
                         </label>
                         <label className="input-group">
-                            <input type="email" readOnly value={user.email} name="rating" className="input input-bordered w-full" />
+                            <input type="email" name='email' readOnly value={user.email} className="input input-bordered w-full" />
                         </label>
                     </div>
                 </div>

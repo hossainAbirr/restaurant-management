@@ -7,7 +7,7 @@ const Navbar = () => {
     console.log(user);
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/addfood'>Add A Food</NavLink></li>
+        <li><NavLink to='/allfood'>All Food</NavLink></li>
         <li><NavLink to='/blog'>Blog</NavLink></li>
     </>
 

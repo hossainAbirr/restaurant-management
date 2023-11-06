@@ -7,6 +7,7 @@ import Signin from '../Pages/SignIn/Signin';
 import NotFound from '../Pages/NotFound/NotFound';
 import AddFood from '../Pages/Food/AddFood';
 import PrivateRoute from './PrivateRoute';
+import AllFood from '../Pages/Food/AllFood';
 
 
 const myRouterForRestaurant = createBrowserRouter([
@@ -24,6 +25,12 @@ const myRouterForRestaurant = createBrowserRouter([
                 element: <PrivateRoute>
                     <AddFood></AddFood>
                 </PrivateRoute>
+            },
+            {
+                path: '/allfood',
+                element:<AllFood></AllFood>,
+                loader: () => fetch('http://localhost:2500/allfood')
+               
             },
             {
                 path: '/signup',
