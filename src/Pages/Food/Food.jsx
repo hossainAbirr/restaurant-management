@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 const Food = ({ food }) => {
-    const { name, photo, category, price, quantity } = food
+    const { _id, name, photo, category, price, quantity } = food
     return (
         <div>
             <div className="card shadow-xl">
@@ -14,7 +15,8 @@ const Food = ({ food }) => {
                 <p>Food Price : {price}</p>
                 <p>Available : {quantity}</p>
                 <div className="card-actions">
-                    <button className="btn text-white bg-[#FF7518]">Buy Now</button>
+                    <button className="btn text-white bg-[#FF7518]"><Link
+                        to={`/foods/${_id}`}>See Details</Link></button>
                 </div>
             </div>
         </div>

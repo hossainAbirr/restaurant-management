@@ -12,6 +12,7 @@ const AddFood = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
+        const maker = form.maker.value;
         const category = form.category.value;
         const quantity = form.quantity.value;
         const price = form.price.value;
@@ -19,7 +20,7 @@ const AddFood = () => {
         const description = form.description.value;
         const photo = form.photo.value;
         const newFood = {
-            name, category, price, quantity, description, photo, email
+            name, maker, category, price, quantity, description, photo, email
         }
 
         axios.post('http://localhost:2500/addfood', newFood)
@@ -36,7 +37,7 @@ const AddFood = () => {
     }
     return (
         <div className="bg-[#F4F3F0] px-8 lg:px-24 py-16">
-            <h2 className="text-3xl font-bold">Add Product by Brand Category</h2>
+            <h2 className="text-3xl font-bold">Add Food via the following form</h2>
             <form onSubmit={handleAddFood}>
                 {/* name row */}
                 <div className="lg:flex bg-[] gap-5">
@@ -76,7 +77,7 @@ const AddFood = () => {
                             <span className="label-text text-lg font-semibold">Food Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" placeholder="Enter Food Price" name="price" className="input input-bordered w-full" />
+                            <input type="number" placeholder="Enter Food Price" name="price" className="input input-bordered w-full" />
                         </label>
                     </div>
 
@@ -88,7 +89,7 @@ const AddFood = () => {
                             <span className="label-text text-lg font-semibold">Your Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" readOnly value={user.displayName} name="price" className="input input-bordered w-full" />
+                            <input type="text" readOnly value={user.displayName} name="maker" className="input input-bordered w-full" />
                         </label>
                     </div>
                     <div className="form-control lg:w-1/2">
