@@ -54,10 +54,9 @@ const MyOrders = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>Service Name</th>
-                        <th>Service Charge</th>
-                        <th>Order Date</th>
-                        <th>Order Status</th>
+                        <th>Food Details</th>
+                        <th>Food Price</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

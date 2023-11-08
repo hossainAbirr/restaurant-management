@@ -1,8 +1,9 @@
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const MyFoodRow = ({ order, handleDelete, handleConfirm }) => {
-    const { photo, price, date, title, _id, status } = order;
-
-
+    const { photo, price, foodName,providerEmail,providerName, category, _id } = order;
+    
     return (
         <tr>
             <td>
@@ -12,21 +13,21 @@ const MyFoodRow = ({ order, handleDelete, handleConfirm }) => {
                             <img src={photo} />
                         </div>
                     </div>
+
                     <div>
-                        <div className="font-bold">{title}</div>
-                        {/* <div className="text-sm opacity-50">United States</div> */}
+                        <div className="font-bold">{foodName}</div>
+                        <h3>Provider Name: <span>{providerName}</span></h3>
+                        <h3>Provider Email: <span>{providerEmail}</span></h3>
+                        <h3>Food Category : <span>{category}</span></h3>
                     </div>
                 </div>
             </td>
             <td>
-                ${price}
+                ${price}.00
             </td>
-            <td>{date}</td>
             <th>
-                {
-                    status ? <span className="font-bold text-primary">Confirm</span> :
-                    <button onClick={() => handleConfirm(_id)} className="btn btn-ghost">Confirm</button>
-                }            </th>
+                <Link to={`/updatefood/${_id}`} className="btn font-bold text-white btn-primary">Update Details</Link>
+            </th>
         </tr>
     );
 };
