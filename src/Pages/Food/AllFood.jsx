@@ -12,7 +12,7 @@ const AllFood = () => {
     console.log(search);
 
     const handleSearch = () => {
-        const searchedFood = foods.filter(food => food.name.includes(search.toLowerCase()));
+        const searchedFood = foods.filter(food => food.name.toLowerCase().includes(search.toLowerCase()));
         console.log(searchedFood);
         setFilterredFood(searchedFood);
 

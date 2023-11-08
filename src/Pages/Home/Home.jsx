@@ -1,6 +1,18 @@
 import Banner from "./Banner";
 import signature from '../../assets/signature.png';
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Home = () => {
+
+    const [topFoods, setTopFoods] = useState([]);
+    console.log(topFoods);
+    useEffect(() => {
+        axios.get(`http://localhost:2500/topfoods`)
+        .then(res => {
+            console.log(res.data);
+            setTopFoods(res.data)
+        })
+    },[])
     return (
         <div>
             <Banner></Banner>

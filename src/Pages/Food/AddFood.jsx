@@ -11,7 +11,7 @@ const AddFood = () => {
     const handleAddFood = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        const foodName = form.name.value;
         const providerName = form.maker.value;
         const category = form.category.value;
         const quantity = form.quantity.value;
@@ -20,7 +20,7 @@ const AddFood = () => {
         const description = form.description.value;
         const photo = form.photo.value;
         const newFood = {
-            name, providerName, category, price, quantity, description, photo, providerEmail
+            foodName, providerName, category, price, quantity, description, photo, providerEmail
         }
 
         axios.post('http://localhost:2500/addfood', newFood)
@@ -55,9 +55,14 @@ const AddFood = () => {
                         </label>
                         <label className="input-group">
                             <select type="text" placeholder="Enter Food Category" name="category" className="input input-bordered w-full">
-                                <option value='burger'>Burger</option>
-                                <option value='pizza'>Pizza</option>
-                                <option value='meats'>Meats</option>
+                                <option value='Burger'>Burger</option>
+                                <option value='Pizza'>Pizza</option>
+                                <option value='Meats'>Meats</option>
+                                <option value='Milk Shake'>Milk Shake</option>
+                                <option value='Sandwich'>Sandwich</option>
+                                <option value='Vegetables'>Vegetables</option>
+                                <option value='Salad'>Salad</option>
+                                <option value='Dringkings'>Dringkings</option>
                             </select>
                         </label>
                     </div>
@@ -77,7 +82,7 @@ const AddFood = () => {
                             <span className="label-text text-lg font-semibold">Food Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="number" placeholder="Enter Food Price" name="price" className="input input-bordered w-full" />
+                            <input type="text" placeholder="Enter Food Price" name="price" className="input input-bordered w-full" />
                         </label>
                     </div>
 

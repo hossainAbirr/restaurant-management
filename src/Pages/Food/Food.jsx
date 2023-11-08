@@ -12,7 +12,7 @@ const Food = ({ food }) => {
             <div className="card-body">
                 <h2 className="card-title text-[#DC143C]">Food Name : {name}</h2>
                 <p className="font-medium text-[#36454F]">Food Category : {category}</p>
-                <p>Food Price : {price}</p>
+                <p>Food Price : ${price}.00</p>
                 <p>Available : {quantity}</p>
                 <div className="card-actions">
                     <button className="btn text-white bg-[#FF7518]"><Link
