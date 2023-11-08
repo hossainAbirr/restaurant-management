@@ -1,6 +1,6 @@
 
 const OrderTableRow = ({ order, handleDelete, }) => {
-    const { photo, price, currentUserEmail, name, category, _id, maker } = order;
+    const { photo, price, orderDate, currentUserEmail, name, category, _id, maker } = order;
 
 
     return (
@@ -12,6 +12,8 @@ const OrderTableRow = ({ order, handleDelete, }) => {
                         <div className="space-y-1">
                             <h3 className="text-lg font-semibold leadi sm:pr-8">{name}</h3>
                             <p className="text-sm text-gray-400">{category}</p>
+                            <p className="text-sm text-gray-400">Order Date : {orderDate}</p>
+
                         </div>
                         <div className="text-left w-1/2">
                             <h2 className="font-semibold text-xl ">Provider Name : <span className="font-medium text-lg">{maker} Hossain</span></h2>

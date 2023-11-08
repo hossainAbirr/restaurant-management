@@ -54,11 +54,6 @@ const MyOrders = () => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>
-                            <label>
-                                {/* <input type="checkbox" className="checkbox" /> */}
-                            </label>
-                        </th>
                         <th>Service Name</th>
                         <th>Service Charge</th>
                         <th>Order Date</th>

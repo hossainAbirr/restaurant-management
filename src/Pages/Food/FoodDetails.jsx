@@ -9,33 +9,30 @@ const FoodDetails = () => {
     const { _id, photo, category, providerEmail, quantity, foodName, price, description, providerName } = food
     console.log(food);
     const buyerName = user?.email;
-    const orderedFood = { photo, category, providerEmail, foodName, price, description, providerName, buyerName, quantity }
+   
     let count = 0;
 
     const handleAddToCart = (id) => {
+        const currentDate = new Date();
+        const dateString = currentDate.toISOString()
+        const orderDate = dateString.split('T')[0];
+        console.log(orderDate);
+        const orderedFood = { photo, category, orderDate, providerEmail, foodName, price, description, providerName, buyerName, quantity }
         axios.post(`http://localhost:2500/order`, orderedFood)
             .then(res => {
                 console.log(res.data)
-                if(res.data.acknowledged){
+                if (res.data.acknowledged) {
                     count++
-                    const sendSellCount = { soldItems : count}
+                    const sendSellCount = { soldItems: count }
                     axios.patch(`http://localhost:2500/foods/${id}`, sendSellCount)
-                    .then(res => {
-                        console.log(res.data);
-                    })
+                        .then(res => {
+                            console.log(res.data);
+                        })
                 }
             })
     }
     return (
         <section>
-            {/* <div className="flex justify-between">
-                <div className="flex-1">
-                    <img src={photo} alt="" />
-                </div>
-
-                <div className="flex-1">
-                </div>
-            </div> */}
             <section className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100">
                 <div className="container mx-auto space-y-12">
                     <div className="flex flex-col  overflow-hidden rounded-md shadow-sm lg:flex-row">

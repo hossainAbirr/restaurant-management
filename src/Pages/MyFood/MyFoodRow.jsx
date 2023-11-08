@@ -1,20 +1,15 @@
 
 const MyFoodRow = ({ order, handleDelete, handleConfirm }) => {
-    const { img, price, date, title, _id, status } = order;
+    const { photo, price, date, title, _id, status } = order;
 
 
     return (
         <tr>
-            <th>
-                <label>
-                    <button onClick={() => handleDelete(_id)} className="btn btn-circle text-white bg-[#444444] hover:bg-[#FF3811]">X</button>
-                </label>
-            </th>
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
                         <div className="w-24 rounded-xl">
-                            <img src={img} />
+                            <img src={photo} />
                         </div>
                     </div>
                     <div>
