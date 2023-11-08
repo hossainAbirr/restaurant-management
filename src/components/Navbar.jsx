@@ -13,7 +13,7 @@ const Navbar = () => {
     const menuNavLinks = <>
         <li><NavLink to='/myfood'>My Food</NavLink></li>
         <li><NavLink to='/addfood'>Add A Food</NavLink></li>
-        <li><NavLink to='/cart'>My Orders</NavLink></li>
+        <li><NavLink to='/myorders'>My Orders</NavLink></li>
     </>
 
     const handleLogOut = () => {

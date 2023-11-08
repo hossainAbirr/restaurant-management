@@ -42,10 +42,8 @@ const myRouterForRestaurant = createBrowserRouter([
                
             },
             {
-                path: '/cart',
+                path: '/myorders',
                 element:<MyOrders></MyOrders>
-                // loader: () => fetch('http://localhost:2500/allfood')
-               
             },
             {
                 path: '/foods/:id',

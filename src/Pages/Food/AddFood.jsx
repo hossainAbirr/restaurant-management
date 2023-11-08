@@ -12,15 +12,15 @@ const AddFood = () => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const maker = form.maker.value;
+        const providerName = form.maker.value;
         const category = form.category.value;
         const quantity = form.quantity.value;
         const price = form.price.value;
-        const email = form.email.value;
+        const providerEmail = form.email.value;
         const description = form.description.value;
         const photo = form.photo.value;
         const newFood = {
-            name, maker, category, price, quantity, description, photo, email
+            name, providerName, category, price, quantity, description, photo, providerEmail
         }
 
         axios.post('http://localhost:2500/addfood', newFood)
