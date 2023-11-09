@@ -19,7 +19,7 @@ const AllFood = () => {
     console.log('filterred foods are here', filterredFoods);
 
     useEffect(() => {
-        axios.get('http://localhost:2500/foods')
+        axios.get('https://restaurant-management-server-kappa.vercel.app/foods')
             .then(res => {
                 setAllFoods(res.data)
                 // setLoading(false)
@@ -43,7 +43,7 @@ const AllFood = () => {
     console.log('page length', page.length);
 
     useEffect(() => {
-        axios.get(`http://localhost:2500/pagination?page=${currentPage}&size=${itemPerPage}`)
+        axios.get(`https://restaurant-management-server-kappa.vercel.app/pagination?page=${currentPage}&size=${itemPerPage}`)
             .then(res => {
                 console.log(res.data);
                 setFilterredFoods(res.data)

@@ -9,7 +9,7 @@ const MyFood = () => {
     const [myFoods, setMyFoods] = useState([])
     console.log(myFoods);
 
-    const url = `http://localhost:2500/myfoods?email=${user?.email}`
+    const url = `https://restaurant-management-server-kappa.vercel.app/myfoods?email=${user?.email}`
 
     useEffect(() => {
         axios.get(url, { withCredentials: true })

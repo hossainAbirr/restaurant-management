@@ -43,12 +43,12 @@ const AuthProvider = ({ children }) => {
             console.log(currentUser);
 
             if (currentUser) {
-                axios.post(`http://localhost:2500/jwt`, loggedUser, { withCredentials: true })
+                axios.post(`https://restaurant-management-server-kappa.vercel.app/jwt`, loggedUser, { withCredentials: true })
                     .then(data => {
                         console.log(data.data);
                     })
             } else {
-                axios.post('http://localhost:2500/logout', loggedUser, { withCredentials: true })
+                axios.post('https://restaurant-management-server-kappa.vercel.app/logout', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })

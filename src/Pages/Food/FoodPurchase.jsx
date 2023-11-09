@@ -18,13 +18,13 @@ const FoodPurchase = () => {
         const buyerName = form.buyerName.value;
         const buyerEmail = form.buyerEmail.value;
         const orderedFood = {photo, providerEmail, providerName, category, orderDate,  foodName, price, buyerName, quantity, buyerEmail }
-        axios.post(`http://localhost:2500/order`, orderedFood)
+        axios.post(`https://restaurant-management-server-kappa.vercel.app/order`, orderedFood)
             .then(res => {
                 console.log(res.data)
                 if (res.data.acknowledged) {
                     count++
                     const sendSellCount = { soldItems: count }
-                    axios.patch(`http://localhost:2500/foods/${_id}`, sendSellCount)
+                    axios.patch(`https://restaurant-management-server-kappa.vercel.app/foods/${_id}`, sendSellCount)
                         .then(res => {
                             console.log(res.data);
                         })

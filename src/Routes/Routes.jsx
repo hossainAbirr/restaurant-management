@@ -34,7 +34,7 @@ const myRouterForRestaurant = createBrowserRouter([
             {
                 path: '/foods',
                 element: <AllFood></AllFood>,
-                loader: () => fetch('http://localhost:2500/countfoods')
+                loader: () => fetch('https://restaurant-management-server-kappa.vercel.app/countfoods')
 
             },
             {
@@ -49,17 +49,17 @@ const myRouterForRestaurant = createBrowserRouter([
             {
                 path: '/foods/:id',
                 element: <FoodDetails></FoodDetails>,
-                loader: ({ params }) => fetch(`http://localhost:2500/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://restaurant-management-server-kappa.vercel.app/foods/${params.id}`)
             },
             {
                 path: '/purchase/:id',
                 element: <FoodPurchase></FoodPurchase>,
-                loader: ({ params }) => fetch(`http://localhost:2500/purchase/${params.id}`)
+                loader: ({ params }) => fetch(`https://restaurant-management-server-kappa.vercel.app/purchase/${params.id}`)
             },
             {
                 path: '/updatefood/:id',
                 element: <UpdateFood></UpdateFood>,
-                loader: ({ params }) => fetch(`http://localhost:2500/updatefood/${params.id}`)
+                loader: ({ params }) => fetch(`https://restaurant-management-server-kappa.vercel.app/updatefood/${params.id}`)
 
             },
             {

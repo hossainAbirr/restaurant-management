@@ -23,7 +23,7 @@ const AddFood = () => {
             foodName, providerName, category, price, quantity, description, photo, providerEmail
         }
 
-        axios.post('http://localhost:2500/addfood', newFood)
+        axios.post('https://restaurant-management-server-kappa.vercel.app/addfood', newFood)
             .then(res => {
                 console.log(res.data);
                 if (res.data.acknowledged) {

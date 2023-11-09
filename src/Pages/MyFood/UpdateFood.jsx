@@ -5,7 +5,7 @@ const UpdateFood = () => {
     const food = useLoaderData()
     console.log(food);
     const {_id, foodName, category, photo, price, soldItems, description, quantity, providerEmail, providerName, } = food
-    
+
     const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
@@ -19,7 +19,7 @@ const UpdateFood = () => {
         const photo = form.photo.value;
 
         const updatedFood = {foodName, soldItems, providerEmail, providerName, category, quantity, price, photo, description}
-        axios.patch(`http://localhost:2500/updatefood/${_id}`, updatedFood)
+        axios.patch(`https://restaurant-management-server-kappa.vercel.app/updatefood/${_id}`, updatedFood)
         .then(res => {
             console.log(res.data);
         })

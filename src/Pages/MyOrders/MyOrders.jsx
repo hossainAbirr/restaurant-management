@@ -8,7 +8,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const [orders, setOrders] = useState([])
     console.log(orders);
-    const url = `http://localhost:2500/myorders?email=${user?.email}`
+    const url = `https://restaurant-management-server-kappa.vercel.app/myorders?email=${user?.email}`
 
     useEffect(() => {
         axios.get(url, { withCredentials: true })
@@ -31,9 +31,7 @@ const MyOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios.delete(`
-                http://localhost:2500
-
-/myorders/${id}`)
+                https://restaurant-management-server-kappa.vercel.app/myorders/${id}`)
                     .then(result => {
                         console.log(result);
                         if (result.data.deletedCount > 0) {
@@ -62,20 +60,7 @@ const MyOrders = () => {
                 }
 
             </ul>
-            <div className="space-y-1 px-36 text-right">
-                <p>Total amount:
-                    <span className="font-semibold">357 $</span>
-                </p>
-                <p className="text-sm text-gray-400">Not including taxes and shipping costs</p>
-            </div>
-            <div className="flex px-36 justify-end space-x-4">
-                <button type="button" className="px-6 py-2 border rounded-md border-violet-400">Back
-                    <span className="sr-only sm:not-sr-only">to shop</span>
-                </button>
-                <button type="button" className="px-6 py-2 border rounded-md bg-violet-400 text-gray-900 border-violet-400">
-                    <span className="sr-only sm:not-sr-only">Continue to</span>Checkout
-                </button>
-            </div>
+            
         </div>
     );
 };
