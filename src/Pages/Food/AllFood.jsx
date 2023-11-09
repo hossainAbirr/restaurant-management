@@ -7,10 +7,9 @@ const AllFood = () => {
     const [loading, setLoading] = useState(true);
     const [allFoods, setAllFoods] = useState([])
     const [filterredFoods, setFilterredFoods] = useState([]);
-    const [itemPerPage, setItemPerPage] = useState(4)
+    const [itemPerPage, setItemPerPage] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
     const [searchText, setSearchText] = useState('');
-    const [count, setCount] = useState(0);
 
     const finaleSearchText = searchText;
     const { countfoods } = useLoaderData();
@@ -73,6 +72,8 @@ const AllFood = () => {
     }
     return (
         <div className="max-w-7xl mx-auto py-20">
+            <h1 className="text-[#FF7518] font-bold text-5xl text-center">Abir&apos;s Restaurant <br /> <span className="h-14 bg-clip-text bg-gradient-to-r from-[#FF7518] to-[#1E2875] text-transparent inline-block">All the delicious dishes you could think of</span> </h1>
+            <h2 className="my-5 text-center font-medium">Looking for something specific? Use our search function to find dishes by name.</h2>
             <div className="flex justify-center py-10">
                 <input onChange={e => setSearchText(e.target.value.toLowerCase())} type="search" name="search" id="1" className="input input-bordered rounded-r-sm w-1/2" />
                 <button onClick={handleSearch} className="btn rounded-l-none">Search</button>
@@ -86,12 +87,12 @@ const AllFood = () => {
                 }
             </div>
 
-            <div className={`flex justify-center pt-10`}>
-                <button className="btn btn-primary" onClick={handlePrevPage}>Previous</button>
+            <div className={`flex justify-around items-center pt-10`}>
+                <button className="btn" onClick={handlePrevPage}>Previous</button>
                 {
                     page.map(item => (
                         <button
-                            className={currentPage === item ? 'btn btn-circle btn-warning' : ''}
+                            className={currentPage === item ? 'btn btn-circle btn-warning mx-10' : 'btn btn-circle'}
                             onClick={() => {
                                 handleRoutePage(item);
                             }}
@@ -101,13 +102,17 @@ const AllFood = () => {
                         </button>
                     ))
                 }
-                <button className="btn btn-secondary" onClick={handleNextPage}>Next</button>
-                <select value={itemPerPage} onChange={handleChange}>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
+                <button className="btn" onClick={handleNextPage}>Next</button>
+
+                <div className="flex flex-row gap-3 items-center">
+                    <h2 className="text-xl font-medium text-[#FF7518]">Items per page</h2>
+                    <select className="input input-bordered" value={itemPerPage} onChange={handleChange}>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
             </div>
 
         </div>

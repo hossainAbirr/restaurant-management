@@ -15,8 +15,7 @@ const Food = ({ food }) => {
                 <p>Food Price : ${price}.00</p>
                 <p>Available : {quantity}</p>
                 <div className="card-actions">
-                    <button className="btn text-white bg-[#FF7518]"><Link
-                        to={`/foods/${_id}`}>See Details</Link></button>
+                    <Link to={`/foods/${_id}`} className="btn text-white bg-[#FF7518]">See Details</Link>
                 </div>
             </div>
         </div>
