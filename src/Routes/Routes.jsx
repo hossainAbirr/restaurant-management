@@ -33,7 +33,7 @@ const myRouterForRestaurant = createBrowserRouter([
             {
                 path: '/foods',
                 element: <AllFood></AllFood>,
-                loader: () => fetch('http://localhost:2500/foods')
+                loader: () => fetch('http://localhost:2500/countfoods')
 
             },
             {

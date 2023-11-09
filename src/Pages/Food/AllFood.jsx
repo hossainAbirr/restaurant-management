@@ -2,69 +2,65 @@ import { useLoaderData } from "react-router-dom";
 import Food from "./Food";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 const AllFood = () => {
 
-    const foods = useLoaderData();
-    console.log(foods);
-    const [search, setSearch] = useState('');
-    const [filterredFood, setFilterredFood] = useState(foods);
-    const [sliceLength, setSliceLength] = useState(9);
-    const [isSeeAll, setIsSeeAll] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [allFoods, setAllFoods] = useState([])
+    const [filterredFoods, setFilterredFoods] = useState([]);
     const [itemPerPage, setItemPerPage] = useState(4)
     const [currentPage, setCurrentPage] = useState(0)
-    // const [count, setCount] = useState(8)
+    const [searchText, setSearchText] = useState('');
+    const [count, setCount] = useState(0);
 
-    const count = foods.length
-    console.log(search);
-    console.log(count, itemPerPage);
+    const finaleSearchText = searchText;
+    const { countfoods } = useLoaderData();
+    console.log('all foods are here', allFoods);
+    console.log(searchText);
+    console.log('filterred foods are here', filterredFoods);
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:2500/countproducts')
-    //     .then(res => {
-    //         console.log(res.data);
-    //         setCount(res.data)
-    //     })
-    // },[])
+    useEffect(() => {
+        axios.get('http://localhost:2500/foods')
+            .then(res => {
+                setAllFoods(res.data)
+                // setLoading(false)
+            })
+    }, [])
 
     const handleSearch = () => {
-        const searchedFood = foods.filter(food => food.name.toLowerCase().includes(search.toLowerCase()));
-        console.log(searchedFood);
-        setFilterredFood(searchedFood);
+        // const fanmes = allFoods.map(fname => console.log(fname.name.toLowerCase()));
+        // const searchedFoods = allFoods.filter(food => food?.name.toLowerCase().includes(finaleSearchText));
+        // console.log(searchedFoods);
+        // setFilterredFoods(searchedFoods);
+        console.log(searchText);
+    };
 
-    }
-    // const handleShowAll = () => {
-    //     console.log(isSeeAll);
-    //     if (isSeeAll) {
-    //         setSliceLength(foods.length)
-    //     } else {
-    //         setSliceLength(9)
-    //     }
-    // }
-    const numberOfPages = Math.ceil(count / itemPerPage);
-    console.log(numberOfPages);
+    const numberOfPages = Math.ceil(countfoods / itemPerPage);
+
+    console.log(typeof countfoods, countfoods, numberOfPages, typeof numberOfPages);
+
     const page = [...Array(numberOfPages).keys()];
 
-    console.log(page);
+    console.log('page length', page.length);
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:2500/pagination?page=${currentPage}&size=${itemPerPage}`)
-    //         .then(res => {
-    //             console.log(res.data);
-    //             setFilterredFood(res.data)
-    //         })
-    // }, [currentPage, itemPerPage])
+    useEffect(() => {
+        axios.get(`http://localhost:2500/pagination?page=${currentPage}&size=${itemPerPage}`)
+            .then(res => {
+                console.log(res.data);
+                setFilterredFoods(res.data)
+                setLoading(false);
+            })
+    }, [currentPage, itemPerPage])
 
     const handleChange = (e) => {
         setItemPerPage(parseInt(e.target.value))
         setCurrentPage(0);
     }
-    const handleNextPage = () => {
+    const handlePrevPage = () => {
         if (currentPage > 0) {
             setCurrentPage(currentPage - 1)
         }
     }
-    const handlePrevPage = () => {
+    const handleNextPage = () => {
         if (currentPage < page.length - 1) {
             setCurrentPage(currentPage + 1)
         }
@@ -72,29 +68,30 @@ const AllFood = () => {
     const handleRoutePage = (currentNum) => {
         setCurrentPage(currentNum);
     }
+    if (loading) {
+        return <div className="h-screen flex justify-center items-center"><h1>loading...</h1></div>
+    }
     return (
         <div className="max-w-7xl mx-auto py-20">
             <div className="flex justify-center py-10">
-                <input onChange={e => setSearch(e.target.value)} type="search" name="search" id="1" className="input input-bordered rounded-r-sm w-1/2" />
+                <input onChange={e => setSearchText(e.target.value.toLowerCase())} type="search" name="search" id="1" className="input input-bordered rounded-r-sm w-1/2" />
                 <button onClick={handleSearch} className="btn rounded-l-none">Search</button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10">
                 {
-                    filterredFood.slice(0, sliceLength).map(food => <Food
+                    filterredFoods.map(food => <Food
                         key={food._id}
                         food={food}
                     ></Food>)
                 }
             </div>
+
             <div className={`flex justify-center pt-10`}>
-                {/* {
-                    isSeeAll ? <button onClick={() => handleShowAll(setIsSeeAll(!isSeeAll))} className="btn btn-accent">See All</button> : <button onClick={() => handleShowAll(setIsSeeAll(!isSeeAll))} className="btn btn-info">See Less</button>
-                } */}
                 <button className="btn btn-primary" onClick={handlePrevPage}>Previous</button>
                 {
                     page.map(item => (
                         <button
-                            className={currentPage === item ? 'bg-orange-500' : ''}
+                            className={currentPage === item ? 'btn btn-circle btn-warning' : ''}
                             onClick={() => {
                                 handleRoutePage(item);
                             }}
