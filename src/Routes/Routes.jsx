@@ -13,6 +13,7 @@ import MyOrders from '../Pages/MyOrders/MyOrders';
 import FoodDetails from '../Pages/Food/FoodDetails';
 import UpdateFood from '../Pages/MyFood/UpdateFood';
 import FoodPurchase from '../Pages/Food/FoodPurchase';
+import Blog from '../Pages/Blog/Blog';
 
 
 const myRouterForRestaurant = createBrowserRouter([
@@ -70,6 +71,10 @@ const myRouterForRestaurant = createBrowserRouter([
                 path: '/signin',
                 element: <Signin></Signin>
             },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            }
 
         ]
     },

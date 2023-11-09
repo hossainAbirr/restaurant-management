@@ -47,6 +47,7 @@ const MyOrders = () => {
             }
         })
     }
+    document.title = "My Orders || Abir's Restaurant";
     return (
         <div className="flex flex-col px-36 space-y-4 sm:p-10 bg-gray-900 text-gray-100">
             <h2 className="text-xl px-36 font-semibold">Your cart</h2>

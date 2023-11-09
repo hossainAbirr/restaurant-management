@@ -18,7 +18,7 @@ const FoodDetails = () => {
                             <span className="text-lg mb-3 uppercase dark:text-gray-400">Origin : Bangladesh</span>
                             <span className="text-lg uppercase dark:text-gray-400">Price : {price}</span>
                             <p className="my-6 dark:text-gray-400">{description}</p>
-                            <Link to={`/purchase/${_id}`} type="button" className="btn btn-secondary text-white">Order Now</Link>
+                            <Link to={`/purchase/${_id}`} type="button" className="btn btn-warning text-white">Order Now</Link>
                         </div>
                     </div>
                 </div>

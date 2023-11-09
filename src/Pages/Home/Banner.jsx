@@ -5,6 +5,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
 import banner1 from '../../assets/banner1.jpg'
 import banner3 from '../../assets/banner3.jpg'
 import banner4 from '../../assets/banner4.jpg'
+import { Link } from 'react-router-dom';
 const Banner = () => {
     const sliderImg = [banner1, banner3, banner4,]
     return (
@@ -36,7 +37,7 @@ const Banner = () => {
                                         at Abir&apos;s Restaurant</h1>
 
                                     <p className='w-1/2 font-medium'>Experience a symphony of flavors with our expertly crafted dishes. From the sizzle of prime steaks to the zest of fresh salads, indulge in a dining adventure that tantalizes your taste buds. Join us for a meal that&apos;s more than just food—it&apos;s a memory in the making.</p>
-                                    <button className='btn btn-secondary mt-5'>See All Dishes</button>
+                                    <Link to={'/foods'} className='btn btn-secondary mt-5'>See All Dishes</Link>
                                 </div>
                             </div>
                         </div>

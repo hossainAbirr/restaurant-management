@@ -30,6 +30,7 @@ const SignUp = () => {
             console.log(error);
         })
     }
+    document.title = "Sign Up || Abir's Restaurant";
     return (
         <div className="bg-current py-20 flex justify-center ">
             <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100">

@@ -37,7 +37,7 @@ const AddFood = () => {
     }
     return (
         <div className="bg-[#F4F3F0] px-8 lg:px-24 py-16">
-            <h2 className="text-3xl font-bold">Add Food via the following form</h2>
+            <h2 className="text-3xl font-bold text-center text-[#FF7518] mb-10">Add Food via the following form</h2>
             <form onSubmit={handleAddFood}>
                 {/* name row */}
                 <div className="lg:flex bg-[] gap-5">
@@ -128,7 +128,7 @@ const AddFood = () => {
                         </label>
                     </div>
                 </div>
-                <input type="submit" name="Add" id="" value="Add Food" className="btn btn-block bg-[#D2B48C] mt-8" />
+                <input type="submit" name="Add" id="" value="Add Food" className="btn btn-block btn-warning mt-8" />
             </form>
 
         </div>
