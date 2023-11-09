@@ -28,9 +28,9 @@ const AllFood = () => {
 
     const handleSearch = () => {
         // const fanmes = allFoods.map(fname => console.log(fname.name.toLowerCase()));
-        // const searchedFoods = allFoods.filter(food => food?.name.toLowerCase().includes(finaleSearchText));
-        // console.log(searchedFoods);
-        // setFilterredFoods(searchedFoods);
+        const searchedFoods = allFoods.filter(food => food?.name && food.name.toLowerCase().includes(finaleSearchText));
+        console.log(searchedFoods);
+        setFilterredFoods(searchedFoods);
         console.log(searchText);
     };
 

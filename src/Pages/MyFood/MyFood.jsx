@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import MyFoodRow from "./MyFoodRow";
 import axios from "axios";
 
-const MyOrders = () => {
+const MyFood = () => {
     const { user } = useContext(AuthContext);
     const [myFoods, setMyFoods] = useState([])
     console.log(myFoods);
@@ -44,4 +44,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default MyFood;

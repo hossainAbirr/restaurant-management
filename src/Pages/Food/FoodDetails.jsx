@@ -1,36 +1,10 @@
-import axios from "axios";
-import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+
+import { Link, useLoaderData } from "react-router-dom";
 
 const FoodDetails = () => {
-    const { user } = useContext(AuthContext)
     const food = useLoaderData();
     const { _id, photo, category, providerEmail, quantity, foodName, price, description, providerName } = food
     console.log(food);
-    const buyerName = user?.email;
-   
-    let count = 0;
-
-    const handleAddToCart = (id) => {
-        const currentDate = new Date();
-        const dateString = currentDate.toISOString()
-        const orderDate = dateString.split('T')[0];
-        console.log(orderDate);
-        const orderedFood = { photo, category, orderDate, providerEmail, foodName, price, description, providerName, buyerName, quantity }
-        axios.post(`http://localhost:2500/order`, orderedFood)
-            .then(res => {
-                console.log(res.data)
-                if (res.data.acknowledged) {
-                    count++
-                    const sendSellCount = { soldItems: count }
-                    axios.patch(`http://localhost:2500/foods/${id}`, sendSellCount)
-                        .then(res => {
-                            console.log(res.data);
-                        })
-                }
-            })
-    }
     return (
         <section>
             <section className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100">
@@ -40,10 +14,11 @@ const FoodDetails = () => {
                         <div className="flex flex-col justify-around flex-1 p-6 dark:bg-gray-900">
                             <h3 className="text-3xl font-bold">Food Name : {foodName}</h3>
                             <span className="text-lg mb-3 mt-3 uppercase dark:text-gray-400">Category : {category}</span>
-                            <span className="text-lg mb-3 uppercase dark:text-gray-400">Provider : {providerName}</span>
+                            <span className="text-lg mb-3 uppercase dark:text-gray-400">Made by : {providerName}</span>
+                            <span className="text-lg mb-3 uppercase dark:text-gray-400">Origin : Bangladesh</span>
                             <span className="text-lg uppercase dark:text-gray-400">Price : {price}</span>
                             <p className="my-6 dark:text-gray-400">{description}</p>
-                            <button onClick={() => handleAddToCart(_id)} type="button" className="btn btn-secondary text-white">Add to cart</button>
+                            <Link to={`/purchase/${_id}`} type="button" className="btn btn-secondary text-white">Order Now</Link>
                         </div>
                     </div>
                 </div>
