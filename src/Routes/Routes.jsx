@@ -32,31 +32,31 @@ const myRouterForRestaurant = createBrowserRouter([
             },
             {
                 path: '/foods',
-                element:<AllFood></AllFood>,
+                element: <AllFood></AllFood>,
                 loader: () => fetch('http://localhost:2500/foods')
-               
+
             },
             {
                 path: '/myfood',
-                element:<MyFood></MyFood>,
+                element: <MyFood></MyFood>,
                 // loader: () => fetch('http://localhost:2500/allfood')
-               
+
             },
             {
                 path: '/myorders',
-                element:<MyOrders></MyOrders>
+                element: <MyOrders></MyOrders>
             },
             {
                 path: '/foods/:id',
                 element: <FoodDetails></FoodDetails>,
-                loader: ({params}) => fetch(`http://localhost:2500/foods/${params.id}`)
-               
+                loader: ({ params }) => fetch(`http://localhost:2500/foods/${params.id}`)
+
             },
             {
                 path: '/updatefood/:id',
                 element: <UpdateFood></UpdateFood>,
-                loader: ({params}) => fetch(`http://localhost:2500/updatefood/${params.id}`)
-               
+                loader: ({ params }) => fetch(`http://localhost:2500/updatefood/${params.id}`)
+
             },
             {
                 path: '/signup',
@@ -71,4 +71,4 @@ const myRouterForRestaurant = createBrowserRouter([
     },
 ]);
 
-export default myRouterForRestaurant
+export default myRouterForRestaurant;

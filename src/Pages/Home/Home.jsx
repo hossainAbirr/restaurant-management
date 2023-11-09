@@ -27,13 +27,15 @@ const Home = () => {
 
 
             <div>
-
+                <h2 className="text-5xl font-bold text-center text-[#FF7518]"><span className="border-l-[10px] rounded-sm pl-1 border-[#e51c1c]">C</span>ulinary Stars :
+                    Our Bestselling Delights</h2>
+                <p>Our Top Food selection features locally-sourced ingredients and the freshest produce of the season. From the fiery zest of our signature spicy wings to the indulgent melt of our gourmet cheeseburger, these crowd-pleasers are more than just meals; they’re a celebration of taste. So, whether you’re a first-time visitor or a regular patron, prepare your palate for the stars of our menu that have earned their place at the top</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10 my-32">
                     {
                         topFoods.map(food => <TopFood
-                        key={food._id}
-                        food={food}
+                            key={food._id}
+                            food={food}
                         ></TopFood>)
                     }
                 </div>

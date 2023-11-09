@@ -30,7 +30,10 @@ const MyOrders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:2500/myorders/${id}`)
+                axios.delete(`
+                http://localhost:2500
+
+/myorders/${id}`)
                     .then(result => {
                         console.log(result);
                         if (result.data.deletedCount > 0) {
@@ -45,28 +48,6 @@ const MyOrders = () => {
                     })
             }
         })
-    }
-
-    const handleConfirm = id => {
-        fetch(`http://localhost:2500/orders/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'confirm' })
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-                if (result.modifiedCount > 0) {
-                    const remaining = orders.filter(order => order._id !== id)
-                    const updated = orders.find(order => order._id === id)
-                    updated.status = 'confirm';
-                    const newOrders = [updated, ...remaining];
-                    setOrders(newOrders);
-                    console.log(updated);
-                }
-            })
     }
     return (
         <div className="flex flex-col px-36 space-y-4 sm:p-10 bg-gray-900 text-gray-100">

@@ -1,7 +1,7 @@
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 
-const MyFoodRow = ({ order, handleDelete, handleConfirm }) => {
+const MyFoodRow = ({ order,}) => {
     const { photo, price, foodName,providerEmail,providerName, category, _id } = order;
     
     return (

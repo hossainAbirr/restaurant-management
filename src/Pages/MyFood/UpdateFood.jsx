@@ -5,6 +5,7 @@ const UpdateFood = () => {
     const food = useLoaderData()
     console.log(food);
     const {_id, foodName, category, photo, price, soldItems, description, quantity, providerEmail, providerName, } = food
+    
     const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
