@@ -35,6 +35,7 @@ const AddFood = () => {
                 }
             })
     }
+    document.title = "Add Food || Abir's Restaurant";
     return (
         <div className="bg-[#F4F3F0] px-8 lg:px-24 py-16">
             <h2 className="text-3xl font-bold text-center text-[#FF7518] mb-10">Add Food via the following form</h2>

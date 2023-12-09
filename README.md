@@ -1,6 +1,6 @@
 # Website Name : Abir's Restaurant
 
-## Livesite Link : https://restaurant-management-client.web.app/
+## Livesite Link : https://stupendous-elf-880ad6.netlify.app/
 
 - 1 : Login registration integrated from firebase
 - 2 : Client can add a product

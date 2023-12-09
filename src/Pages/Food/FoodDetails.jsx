@@ -5,6 +5,7 @@ const FoodDetails = () => {
     const food = useLoaderData();
     const { _id, photo, category, providerEmail, quantity, foodName, price, description, providerName } = food
     console.log(food);
+    document.title = ` ${foodName} || Abir's Restaurant`;
     return (
         <section>
             <section className="p-4 lg:p-8 dark:bg-gray-800 dark:text-gray-100">

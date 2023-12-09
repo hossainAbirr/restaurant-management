@@ -1,12 +1,17 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Food from "./Food";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loding from "../../components/Shared/Loding";
 const AllFood = () => {
 
     const [loading, setLoading] = useState(true);
     const [allFoods, setAllFoods] = useState([])
+
     const [filterredFoods, setFilterredFoods] = useState([]);
+
+    const [isSearch, setIsSearch] = useState(false)
+
     const [itemPerPage, setItemPerPage] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
     const [searchText, setSearchText] = useState('');
@@ -30,8 +35,13 @@ const AllFood = () => {
         const searchedFoods = allFoods.filter(food => food?.name && food.name.toLowerCase().includes(finaleSearchText));
         console.log(searchedFoods);
         setFilterredFoods(searchedFoods);
+        setIsSearch(true)
         console.log(searchText);
     };
+
+    const handleSeeAll = () => {
+
+    }
 
     const numberOfPages = Math.ceil(countfoods / itemPerPage);
 
@@ -68,16 +78,22 @@ const AllFood = () => {
         setCurrentPage(currentNum);
     }
     if (loading) {
-        return <div className="h-screen flex justify-center items-center"><h1>loading...</h1></div>
+        return <Loding></Loding>
     }
+    document.title = "All Food || Abir's Restaurant";
     return (
         <div className="max-w-7xl mx-auto py-20">
             <h1 className="text-[#FF7518] font-bold text-5xl text-center">Abir&apos;s Restaurant <br /> <span className="h-14 bg-clip-text bg-gradient-to-r from-[#FF7518] to-[#1E2875] text-transparent inline-block">All the delicious dishes you could think of</span> </h1>
             <h2 className="my-5 text-center font-medium">Looking for something specific? Use our search function to find dishes by name.</h2>
+
             <div className="flex justify-center py-10">
                 <input onChange={e => setSearchText(e.target.value.toLowerCase())} type="search" name="search" id="1" className="input input-bordered rounded-r-sm w-1/2" />
                 <button onClick={handleSearch} className="btn rounded-l-none">Search</button>
             </div>
+            <div className={` justify-center pb-10 ${isSearch ? 'flex' : 'hidden'}`}>
+                <Link to={`/foods`} onClick={() => setIsSearch(false)} className={`btn w-1/2`}>See All</Link>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10">
                 {
                     filterredFoods.map(food => <Food

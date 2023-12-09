@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import OrderTableRow from "./OrderTableRow";
+import ErrorMyOrders from "./ErrorMyOrders";
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
+    console.log(user.email);
     const [orders, setOrders] = useState([])
     console.log(orders);
     const url = `https://restaurant-management-server-kappa.vercel.app/myorders?email=${user?.email}`
@@ -13,7 +15,7 @@ const MyOrders = () => {
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                console.log(res);
                 setOrders(res.data)
             })
     }, [url])
@@ -46,6 +48,9 @@ const MyOrders = () => {
                     })
             }
         })
+    }
+    if(orders.length === 0){
+        return <ErrorMyOrders></ErrorMyOrders>
     }
     document.title = "My Orders || Abir's Restaurant";
     return (

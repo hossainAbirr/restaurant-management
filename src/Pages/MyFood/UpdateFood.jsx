@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateFood = () => {
     const food = useLoaderData()
     console.log(food);
-    const {_id, foodName, category, photo, price, soldItems, description, quantity, providerEmail, providerName, } = food
+    const { _id, foodName, category, photo, price, soldItems, description, quantity, providerEmail, providerName, } = food
 
     const handleUpdate = e => {
         e.preventDefault();
@@ -18,11 +19,24 @@ const UpdateFood = () => {
         const description = form.description.value;
         const photo = form.photo.value;
 
-        const updatedFood = {foodName, soldItems, providerEmail, providerName, category, quantity, price, photo, description}
+        const updatedFood = { foodName, soldItems, providerEmail, providerName, category, quantity, price, photo, description }
         axios.patch(`https://restaurant-management-server-kappa.vercel.app/updatefood/${_id}`, updatedFood)
-        .then(res => {
-            console.log(res.data);
-        })
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount) {
+                    Swal.fire({
+                        title: "Congratulations!",
+                        text: "Your Order has been placed!",
+                        icon: "success"
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Warning!",
+                        text: "Your did not change anything!",
+                        icon: "info"
+                    });
+                }
+            })
     }
     document.title = "Update Food || Abir's Restaurant";
     return (

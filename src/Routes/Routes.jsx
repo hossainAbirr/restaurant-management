@@ -40,12 +40,16 @@ const myRouterForRestaurant = createBrowserRouter([
             },
             {
                 path: '/myfood',
-                element: <MyFood></MyFood>,
+                element: <PrivateRoute>
+                    <MyFood></MyFood>
+                </PrivateRoute>,
 
             },
             {
                 path: '/myorders',
-                element: <MyOrders></MyOrders>
+                element: <PrivateRoute>
+                    <MyOrders></MyOrders>
+                </PrivateRoute>,
             },
             {
                 path: '/foods/:id',
@@ -54,12 +58,13 @@ const myRouterForRestaurant = createBrowserRouter([
             },
             {
                 path: '/purchase/:id',
-                element: <FoodPurchase></FoodPurchase>,
-                loader: ({ params }) => fetch(`https://restaurant-management-server-kappa.vercel.app/purchase/${params.id}`)
+                element: <PrivateRoute>
+                    <FoodPurchase></FoodPurchase>
+                </PrivateRoute>,
             },
             {
                 path: '/updatefood/:id',
-                element: <UpdateFood></UpdateFood>,
+                element: <PrivateRoute><UpdateFood></UpdateFood></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://restaurant-management-server-kappa.vercel.app/updatefood/${params.id}`)
 
             },

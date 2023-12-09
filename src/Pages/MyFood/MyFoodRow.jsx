@@ -1,9 +1,9 @@
 
 import { Link } from "react-router-dom";
 
-const MyFoodRow = ({ order,}) => {
-    const { photo, price, foodName,providerEmail,providerName, category, _id } = order;
-    
+const MyFoodRow = ({ order, handleDelete }) => {
+    const { photo, price, foodName, providerEmail, providerName, category, _id } = order;
+
     return (
         <tr>
             <td>
@@ -26,7 +26,8 @@ const MyFoodRow = ({ order,}) => {
                 ${price}.00
             </td>
             <th>
-                <Link to={`/updatefood/${_id}`} className="btn font-bold text-white btn-primary">Update Details</Link>
+                <Link to={`/updatefood/${_id}`} className="btn bg-orange-600 text-white font-bold hover:bg-clip-text hover:bg-gradient-to-r from-[#FF7518] to-[#1E2875] hover:text-transparent hover:outline mr-3">Update Details</Link>
+                <button onClick={() => handleDelete(_id)} className="btn text-white hover:bg-clip-text hover:outline bg-gradient-to-r from-[#FF7518] to-[#1E2875] hover:text-transparent inline-block">Delete</button>
             </th>
         </tr>
     );

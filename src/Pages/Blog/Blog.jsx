@@ -1,8 +1,9 @@
 
 const Blog = () => {
+    document.title = "Blog || Abir's Restaurant";
     return (
         <div>
-            <section className="bg-gray-800 text-gray-100">
+            <section className="bg-base-200 text-black">
                 <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
                     <h2 className="mb-12 text-4xl font-bold leadi text-center sm:text-5xl">Know Some Common Questions</h2>
                     <div className="divide-y divide-gray-700">

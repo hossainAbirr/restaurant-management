@@ -31,13 +31,13 @@ const Banner = () => {
                         key={idx}
                     >
                         <div className='h-[700px] text-white' style={{ backgroundImage: `url(${img})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-                            <div className='w-full h-full flex items-center bg-gradient-to-r from-[#84028482] to-[#ffc0cb58]'>
-                                <div className='lg:ml-32 '>
-                                    <h1 className='text-6xl mb-5 text-[#FF7518] font-bold'>Savor the Moment <br />
+                            <div className='w-full h-full pl-10 lg:p-0 text-center lg:text-left flex items-center bg-gradient-to-r from-[#84028482] to-[#ffc0cb58] '>
+                                <div className='lg:ml-32'>
+                                    <h1 className='text-6xl mb-5 text-[#FF7518] font-bold '>Savor the Moment <br />
                                         at Abir&apos;s Restaurant</h1>
 
-                                    <p className='w-1/2 font-medium'>Experience a symphony of flavors with our expertly crafted dishes. From the sizzle of prime steaks to the zest of fresh salads, indulge in a dining adventure that tantalizes your taste buds. Join us for a meal that&apos;s more than just food—it&apos;s a memory in the making.</p>
-                                    <Link to={'/foods'} className='btn btn-secondary mt-5'>See All Dishes</Link>
+                                    <p className='w-1/2 font-medium mx-auto lg:mx-0'>Experience a symphony of flavors with our expertly crafted dishes. From the sizzle of prime steaks to the zest of fresh salads, indulge in a dining adventure that tantalizes your taste buds. Join us for a meal that&apos;s more than just food—it&apos;s a memory in the making.</p>
+                                    <Link to={'/foods'} className='btn btn-warning mt-5'>See All Dishes</Link>
                                 </div>
                             </div>
                         </div>
